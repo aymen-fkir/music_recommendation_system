@@ -7,8 +7,6 @@ import json
 import ast
 import requests 
 
-
-
 load_dotenv()
 # load env
 client_id = os.getenv("client_id")
