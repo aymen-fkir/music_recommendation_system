@@ -53,7 +53,11 @@ for details in history["items"]:
     artist_name = details["track"]["artists"][0]["name"]
     artist = sp.artist(details["track"]["artists"][0]["external_urls"]["spotify"])
     artist_genres = artist["genres"]
-
+    track_id = details["track"]["album"]["id"]
+    # try:
+    #     track_loudnes = sp.audio_analysis(track_id=track_id)["track"]["loudness"]
+    # except:
+    #     track_loudnes = 0
     # get the song lyrics from musixmatch
     try:
         api_call = get_lyrics(track_name, artist_name, api_key)
@@ -62,10 +66,12 @@ for details in history["items"]:
         lyrics = ""
 
     res = {
+        "track_id" : track_id,
         "artist_name": artist_name,
         "track_name": track_name,
         "artist_genres": artist_genres,
-        "song_lyrics" : lyrics
+        "song_lyrics" : lyrics,
+        #"track_loudness":track_loudnes
     }
     user_music_history["items"].append(res)
 
