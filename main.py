@@ -3,17 +3,12 @@ import spotipy
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
-import ast
-import requests 
 import pandas as pd
 from analysis import favorite_genre
 
 load_dotenv()
 # load env
 
-
-
-# spotify auth manging
 def get_spotify_data():
     auth_manager = SpotifyOAuth(scope=scope, client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri)
     sp = spotipy.Spotify(auth_manager=auth_manager)
